@@ -18,9 +18,9 @@ public class FileUtils {
         throw new IllegalStateException("Utility class");
     }
 
-    public static List<String> readTextWithError(String inputFile) {
+    public static List<String> readErrorText(String inputFile) {
         List<String> text = new ArrayList<>();
-        try (Reader reader = Files.newBufferedReader(Paths.get(inputFile));) {
+        try (Reader reader = Files.newBufferedReader(Paths.get(inputFile))) {
             JsonArray parser = JsonParser.parseReader(reader).getAsJsonArray();
             for (JsonElement r : parser) {
                 text.add(r.getAsString());
@@ -31,9 +31,9 @@ public class FileUtils {
         return text;
     }
 
-    public static List<Replacements> readFile(String inputFile) {
+    public static List<Replacements> readReplacementFile(String inputFile) {
         List<Replacements> replacements = new ArrayList<>();
-        try (Reader reader = Files.newBufferedReader(Paths.get(inputFile));) {
+        try (Reader reader = Files.newBufferedReader(Paths.get(inputFile))) {
             JsonArray parser = JsonParser.parseReader(reader).getAsJsonArray();
             for (JsonElement r : parser) {
                 String replacement = r.getAsJsonObject().get("replacement").getAsString();
@@ -48,7 +48,7 @@ public class FileUtils {
     }
 
     public static void writeFile(List<String> correctText) {
-        try (Writer writer = Files.newBufferedWriter(Paths.get("src/main/resources/result.json"));) {
+        try (Writer writer = Files.newBufferedWriter(Paths.get("src/main/resources/result.json"))) {
             Gson gson = new Gson();
             gson.toJson(correctText, writer);
         } catch (Exception ex) {
