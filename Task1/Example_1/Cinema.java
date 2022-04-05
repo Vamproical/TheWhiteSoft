@@ -1,6 +1,6 @@
 public class Cinema {
     private final String[][] theater;
-    private int numberOfPurchasedTickets = 0;
+    private int numberPurchasedTickets = 0;
     private double currentIncome = 0;
 
     public Cinema(int row, int seatsInRow) {
