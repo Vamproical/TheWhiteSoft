@@ -1,9 +1,10 @@
 public class Table {
     private final char[][] table = new char[3][3];
+    private final int size = 3;
 
     public Table() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 table[i][j] = ' ';
             }
         }
@@ -11,9 +12,9 @@ public class Table {
 
     private void printTable() {
         System.out.println("---------");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < size; i++) {
             System.out.print("| ");
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < size; j++) {
                 System.out.print(table[i][j] + " ");
             }
             System.out.println("|");
@@ -22,8 +23,8 @@ public class Table {
     }
 
     private boolean isEmpty() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 if (table[i][j] == ' ') {
                     return true;
                 }
@@ -34,8 +35,8 @@ public class Table {
 
     private boolean isImpossible() {
         int countX = 0, countO = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 if (table[i][j] == 'X') {
                     ++countX;
                 } else if (table[i][j] == 'O') {
